@@ -1,123 +1,178 @@
-# AI Agent
+<div align="center">
 
-A tool-using AI agent powered by Groq (Llama 3.3 70B), exposed both as a CLI and as a FastAPI web service with a simple static frontend.
+# 🤖 AI Agent
 
-## Features
+### A tool-using AI agent powered by Groq (Llama 3.3 70B)
 
-- Conversational agent with memory (stores chat history in `data/memory.json`)
-- Tool calling support:
-  - `calculator`
-  - `time`
-  - `weather`
-  - `currency_converter`
-  - `wikipedia`
-  - `unit_converter`
-- Two ways to run:
-  - CLI chat (`app.py`)
-  - REST API + web UI (`server.py`)
+Available as a **CLI chatbot** and a **FastAPI web service** with a live frontend.
 
-## Project Structure
+![Python](https://img.shields.io/badge/Python-3.12+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.139-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![Groq](https://img.shields.io/badge/Groq-Llama%203.3%2070B-F55036?style=for-the-badge&logo=lightning&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+
+</div>
+
+---
+
+## 📌 Table of Contents
+
+- [Features](#-features)
+- [Project Structure](#-project-structure)
+- [Prerequisites](#-prerequisites)
+- [Local Setup](#-local-setup)
+- [Running the App](#-running-the-app)
+- [API Endpoints](#-api-endpoints)
+- [Deployment](#-deployment)
+- [Git & GitHub Notes](#-git--github-notes)
+
+---
+
+## ✨ Features
+
+- 💬 Conversational agent with persistent memory (`data/memory.json`)
+- 🛠️ Built-in tool calling:
+
+  | Tool | Description |
+  |------|-------------|
+  | 🧮 `calculator` | Basic math operations |
+  | 🕒 `time` | Current time lookup |
+  | 🌦️ `weather` | Weather info |
+  | 💱 `currency_converter` | Currency conversion |
+  | 📚 `wikipedia` | Wikipedia lookups |
+  | 📏 `unit_converter` | Unit conversion |
+
+- ⚡ Two ways to run:
+  - **CLI mode** → quick terminal chat (`app.py`)
+  - **API + Web UI** → FastAPI server with a static frontend (`server.py`)
+
+---
+
+## 📂 Project Structure
 
 ```
 .
-├── agent.py               # Core agent loop (LLM call -> tool call -> final response)
-├── app.py                 # CLI entry point
-├── server.py               # FastAPI server (API + serves static/index.html)
-├── config.py               # Loads GROQ_API_KEY from environment
-├── llm.py                  # LLM client wrapper
-├── memory.py                # Load/save conversation history
-├── parser.py                # Parses tool-call requests from LLM output
-├── prompts.py                # System prompt
-├── tools/                   # Individual tool implementations + registry
-├── static/index.html          # Simple frontend for the web UI
-├── data/memory.json           # Runtime conversation history (auto-generated)
+├── agent.py           # Core agent loop (LLM → tool call → final response)
+├── app.py             # CLI entry point
+├── server.py          # FastAPI server (API + serves static/index.html)
+├── config.py          # Loads GROQ_API_KEY from environment
+├── llm.py             # LLM client wrapper
+├── memory.py          # Load/save conversation history
+├── parser.py          # Parses tool-call requests from LLM output
+├── prompts.py         # System prompt
+├── tools/             # Individual tool implementations + registry
+├── static/index.html  # Simple frontend for the web UI
+├── data/memory.json   # Runtime conversation history (auto-generated)
 ├── requirements.txt
-├── .env.example               # Template for required environment variables
+├── .env.example       # Template for required environment variables
 └── .gitignore
 ```
 
-## Prerequisites
+---
 
-- Python 3.12+
-- A [Groq API key](https://console.groq.com/keys)
+## 🧰 Prerequisites
 
-## Local Setup
+- 🐍 Python 3.12+
+- 🔑 A [Groq API key](https://console.groq.com/keys)
 
-1. Clone the repo and move into it:
-   ```bash
-   git clone <your-repo-url>
-   cd <repo-folder>
-   ```
+---
 
-2. Create a virtual environment and activate it:
-   ```bash
-   python -m venv venv
-   # Windows
-   venv\Scripts\activate
-   # macOS/Linux
-   source venv/bin/activate
-   ```
+## ⚙️ Local Setup
 
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+**1️⃣ Clone the repo**
+```bash
+git clone https://github.com/ayushxdev01/Ai_Agent.git
+cd Ai_Agent
+```
 
-4. Set up environment variables:
-   ```bash
-   cp .env.example .env
-   ```
-   Then open `.env` and add your key:
-   ```
-   GROQ_API_KEY=your_groq_api_key_here
-   ```
+**2️⃣ Create & activate a virtual environment**
+```bash
+python -m venv venv
 
-## Running
+# Windows
+venv\Scripts\activate
 
-**CLI mode:**
+# macOS/Linux
+source venv/bin/activate
+```
+
+**3️⃣ Install dependencies**
+```bash
+pip install -r requirements.txt
+```
+
+**4️⃣ Set up environment variables**
+```bash
+cp .env.example .env
+```
+Then open `.env` and add your key:
+```env
+GROQ_API_KEY=your_groq_api_key_here
+```
+
+---
+
+## ▶️ Running the App
+
+**🖥️ CLI mode**
 ```bash
 python app.py
 ```
 
-**API + web server mode:**
+**🌐 API + Web server mode**
 ```bash
 uvicorn server:app --reload
 ```
-Then open `http://127.0.0.1:8000` in your browser.
+Then open 👉 `http://127.0.0.1:8000`
 
-## API Endpoints
+---
 
-| Method | Endpoint       | Description                          |
-|--------|---------------|---------------------------------------|
-| POST   | `/api/chat`    | Send a message, get agent's reply     |
-| GET    | `/api/tools`   | List available tools                  |
-| POST   | `/api/clear`   | Clear conversation memory             |
-| GET    | `/`            | Serves the frontend (`static/index.html`) |
+## 🔌 API Endpoints
 
-## Deployment
+| Method | Endpoint | Description |
+|:------:|----------|-------------|
+| `POST` | `/api/chat` | Send a message, get the agent's reply |
+| `GET` | `/api/tools` | List available tools |
+| `POST` | `/api/clear` | Clear conversation memory |
+| `GET` | `/` | Serves the frontend (`static/index.html`) |
 
-### Render / Railway (recommended for FastAPI apps)
+---
 
-1. Push this repo to GitHub (see notes below on what **not** to push).
-2. Create a new **Web Service** on [Render](https://render.com) or a new project on [Railway](https://railway.app), connect your GitHub repo.
-3. Set the **Build Command**:
+## 🚀 Deployment
+
+### Render / Railway (recommended)
+
+1. Push this repo to GitHub ⚠️ *(see notes below on what NOT to push)*
+2. Create a new **Web Service** on [Render](https://render.com) or a project on [Railway](https://railway.app), and connect your GitHub repo.
+3. **Build Command:**
    ```bash
    pip install -r requirements.txt
    ```
-4. Set the **Start Command**:
+4. **Start Command:**
    ```bash
    uvicorn server:app --host 0.0.0.0 --port $PORT
    ```
-5. Add an **environment variable** in the platform's dashboard (not in a committed `.env` file):
-   ```
+5. Add an environment variable in the platform dashboard *(never in a committed `.env`)*:
+   ```env
    GROQ_API_KEY=your_groq_api_key_here
    ```
-6. Deploy. Render/Railway will build and start the service automatically on every push to your main branch.
+6. Deploy 🎉 — the platform rebuilds and redeploys automatically on every push to `main`.
 
-## Important Notes on Git / GitHub
+---
 
-- **Never commit `.env`** — it contains your real API key. Only `.env.example` (a placeholder) should be pushed.
-- **Do not push `venv/`** — it's a local Python environment; deployment platforms rebuild it from `requirements.txt`.
-- **Do not push `__pycache__/`** — auto-generated bytecode, not needed in source control.
-- `data/memory.json` is runtime-generated conversation history — the `.gitignore` excludes it so old/test conversations don't get committed and each environment starts fresh.
-- If an API key is ever accidentally committed or shared, rotate/revoke it immediately from the [Groq console](https://console.groq.com/keys).
+## ⚠️ Git & GitHub Notes
+
+> [!WARNING]
+> - 🚫 **Never commit `.env`** — it holds your real API key. Only commit `.env.example`.
+> - 🚫 **Never push `venv/`** — deployment platforms rebuild it from `requirements.txt`.
+> - 🚫 **Never push `__pycache__/`** — auto-generated bytecode.
+> - 🗑️ `data/memory.json` is runtime-generated — excluded via `.gitignore` so old chats don't get committed.
+> - 🔁 If a key is ever accidentally committed, **rotate it immediately** on the [Groq console](https://console.groq.com/keys).
+
+---
+
+<div align="center">
+
+Made with ⚡ using FastAPI + Groq
+
+</div>
