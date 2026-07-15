@@ -1,0 +1,20 @@
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment variables (secrets)
+.env
+
+# Runtime/generated data
+data/memory.json
+
+# OS/editor junk
+.DS_Store
+.vscode/
+*.log
