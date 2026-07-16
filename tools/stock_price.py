@@ -1,0 +1,114 @@
+"""
+tools/stock_price.py
+Live stock price lookup using Yahoo Finance's public endpoint (no API key needed).
+Understands company names (Apple, Tata Motors, Reliance) as well as raw tickers.
+"""
+
+import requests
+
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"
+}
+
+# Common company name -> ticker mapping (covers frequent everyday asks)
+STOCK_ALIASES = {
+    "apple": "AAPL",
+    "microsoft": "MSFT",
+    "google": "GOOGL", "alphabet": "GOOGL",
+    "amazon": "AMZN",
+    "meta": "META", "facebook": "META",
+    "tesla": "TSLA",
+    "nvidia": "NVDA",
+    "netflix": "NFLX",
+    "intel": "INTC",
+    "amd": "AMD",
+    "reliance": "RELIANCE.NS", "reliance industries": "RELIANCE.NS",
+    "tcs": "TCS.NS", "tata consultancy": "TCS.NS", "tata consultancy services": "TCS.NS",
+    "infosys": "INFY.NS", "infy": "INFY.NS",
+    "tata steel": "TATASTEEL.NS",
+    "hdfc bank": "HDFCBANK.NS", "hdfc": "HDFCBANK.NS",
+    "icici bank": "ICICIBANK.NS", "icici": "ICICIBANK.NS",
+    "sbi": "SBIN.NS", "state bank of india": "SBIN.NS",
+    "wipro": "WIPRO.NS",
+    "adani enterprises": "ADANIENT.NS",
+    "bajaj finance": "BAJFINANCE.NS",
+    "airtel": "BHARTIARTL.NS", "bharti airtel": "BHARTIARTL.NS",
+    "itc": "ITC.NS",
+    "maruti": "MARUTI.NS", "maruti suzuki": "MARUTI.NS",
+    "hindustan unilever": "HINDUNILVR.NS", "hul": "HINDUNILVR.NS",
+    "l&t": "LT.NS", "larsen and toubro": "LT.NS", "larsen toubro": "LT.NS",
+}
+
+
+def resolve_symbol(value: str) -> str:
+    if not value:
+        return None
+    cleaned = value.strip().lower()
+    if cleaned in STOCK_ALIASES:
+        return STOCK_ALIASES[cleaned]
+    return value.strip().upper()
+
+
+def _fetch(symbol: str):
+    url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}"
+    response = requests.get(url, headers=HEADERS, timeout=8)
+    if response.status_code == 404:
+        return None
+    response.raise_for_status()
+    data = response.json()
+    result = data.get("chart", {}).get("result")
+    if not result:
+        return None
+    meta = result[0].get("meta", {})
+    if meta.get("regularMarketPrice") is None:
+        return None
+    return meta
+
+
+def execute(arguments: dict):
+    raw_symbol = arguments.get("symbol")
+
+    if not raw_symbol:
+        return "Stock price error: need a 'symbol' or company name (e.g. AAPL, Apple, Reliance)"
+
+    symbol = resolve_symbol(raw_symbol)
+
+    try:
+        meta = _fetch(symbol)
+
+        # If plain ticker fails and it doesn't already have an exchange suffix,
+        # retry as an NSE-listed stock (common case for Indian companies typed in English)
+        if meta is None and "." not in symbol:
+            meta = _fetch(f"{symbol}.NS")
+            if meta is not None:
+                symbol = f"{symbol}.NS"
+
+        if meta is None:
+            return f"Stock price error: could not find data for '{raw_symbol}'. Try the exact ticker (e.g. AAPL, RELIANCE.NS)."
+
+        price = meta.get("regularMarketPrice")
+        currency = meta.get("currency", "")
+        prev_close = meta.get("previousClose") or meta.get("chartPreviousClose")
+        exchange_name = meta.get("fullExchangeName", "")
+
+        change = ""
+        if prev_close:
+            diff = price - prev_close
+            pct = (diff / prev_close) * 100
+            direction = "up" if diff >= 0 else "down"
+            change = f" ({direction} {abs(diff):.2f}, {abs(pct):.2f}% from previous close)"
+
+        return f"{symbol} ({exchange_name}): {price} {currency}{change}"
+
+    except requests.exceptions.RequestException as e:
+        return f"Stock price error: could not reach data service ({e})"
+    except Exception as e:
+        return f"Stock price error: {e}"
+
+
+if __name__ == "__main__":
+    print(execute({"symbol": "Apple"}))
+    print(execute({"symbol": "Reliance"}))
+    print(execute({"symbol": "Tata Motors"}))
+    print(execute({"symbol": "TCS"}))
+    print(execute({"symbol": "Infosys"}))

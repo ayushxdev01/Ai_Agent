@@ -4,6 +4,8 @@ from tools.weather import execute as weather
 from tools.currency_converter import execute as currency_converter
 from tools.wikipedia_tool import execute as wikipedia_lookup
 from tools.unit_converter import execute as unit_converter
+from tools.web_search import execute as web_search
+from tools.stock_price import execute as stock_price
 
 TOOLS = {
     "calculator": calculator,
@@ -12,6 +14,8 @@ TOOLS = {
     "currency_converter": currency_converter,
     "wikipedia": wikipedia_lookup,
     "unit_converter": unit_converter,
+    "web_search": web_search,
+    "stock_price": stock_price,
 }
 
 

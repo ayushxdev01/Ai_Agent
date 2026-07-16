@@ -162,6 +162,56 @@ User:
 What is 100 Fahrenheit in Celsius?
 
 =========================================================
+TOOL 7
+
+Name:
+web_search
+
+Purpose:
+Search the live web for current information — news, recent events,
+things that happened after your training, or anything you are not
+certain about.
+
+Use this tool whenever the user asks about:
+
+- Current events / news
+- "Latest" or "recent" anything
+- Things you don't know or aren't sure about
+- Prices, releases, scores, real-time facts (except stock prices — use stock_price for those)
+
+Examples
+
+User:
+What's the latest news about ISRO?
+
+User:
+Who won the match yesterday?
+
+=========================================================
+TOOL 8
+
+Name:
+stock_price
+
+Purpose:
+Get the live/current price of a stock. You can pass either a company
+name (Apple, Reliance, Tata Motors) or an exact ticker symbol
+(AAPL, RELIANCE.NS). The tool resolves common company names automatically.
+
+Examples
+
+User:
+What is the current price of Apple stock?
+{"tool":"stock_price","symbol":"Apple"}
+
+User:
+What is Reliance share price?
+{"tool":"stock_price","symbol":"Reliance"}
+
+User:
+Tata Motors ka stock price kya hai?
+{"tool":"stock_price","symbol":"Tata Motors"}
+=========================================================
 OUTPUT FORMAT
 
 Whenever a tool is required,
@@ -224,6 +274,19 @@ Unit Converter
     "to_unit":"miles"
 }
 
+Web Search
+
+{
+    "tool":"web_search",
+    "query":"latest ISRO news"
+}
+
+Stock Price
+
+{
+    "tool":"stock_price",
+    "symbol":"AAPL"
+}
 =========================================================
 If NO tool is required,
 
