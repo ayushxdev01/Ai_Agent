@@ -22,10 +22,22 @@ STOCK_ALIASES = {
     "netflix": "NFLX",
     "intel": "INTC",
     "amd": "AMD",
+
     "reliance": "RELIANCE.NS", "reliance industries": "RELIANCE.NS",
+
     "tcs": "TCS.NS", "tata consultancy": "TCS.NS", "tata consultancy services": "TCS.NS",
     "infosys": "INFY.NS", "infy": "INFY.NS",
+    "tata motors": "TMPV.NS", "tata motors passenger vehicles": "TMPV.NS", "tmpv": "TMPV.NS",
     "tata steel": "TATASTEEL.NS",
+    "tata power": "TATAPOWER.NS",
+    "tata chemicals": "TATACHEM.NS",
+    "titan": "TITAN.NS", "titan company": "TITAN.NS",
+    "tata consumer": "TATACONSUM.NS", "tata consumer products": "TATACONSUM.NS",
+    "trent": "TRENT.NS",
+    "tata elxsi": "TATAELXSI.NS",
+    "voltas": "VOLTAS.NS",
+    "tata communications": "TATACOMM.NS",
+
     "hdfc bank": "HDFCBANK.NS", "hdfc": "HDFCBANK.NS",
     "icici bank": "ICICIBANK.NS", "icici": "ICICIBANK.NS",
     "sbi": "SBIN.NS", "state bank of india": "SBIN.NS",
@@ -37,6 +49,15 @@ STOCK_ALIASES = {
     "maruti": "MARUTI.NS", "maruti suzuki": "MARUTI.NS",
     "hindustan unilever": "HINDUNILVR.NS", "hul": "HINDUNILVR.NS",
     "l&t": "LT.NS", "larsen and toubro": "LT.NS", "larsen toubro": "LT.NS",
+}
+
+# Ambiguous group/umbrella names that map to MULTIPLE real companies.
+# When the user just says the group name, give a friendly nudge instead of a raw "not found".
+GROUP_HINTS = {
+    "tata": ["Tata Motors", "TCS", "Tata Steel", "Tata Power", "Titan", "Tata Chemicals", "Tata Consumer"],
+    "reliance group": ["Reliance", "Reliance Industries"],
+    "adani": ["Adani Enterprises", "Adani Ports", "Adani Power", "Adani Green"],
+    "birla": ["Aditya Birla Fashion", "Ultratech Cement", "Grasim"],
 }
 
 
@@ -71,6 +92,17 @@ def execute(arguments: dict):
     if not raw_symbol:
         return "Stock price error: need a 'symbol' or company name (e.g. AAPL, Apple, Reliance)"
 
+    cleaned_input = raw_symbol.strip().lower()
+
+    # Ambiguous group name (e.g. just "Tata") -> guide the user instead of failing silently
+    if cleaned_input in GROUP_HINTS:
+        options = ", ".join(GROUP_HINTS[cleaned_input])
+        return (
+            f"'{raw_symbol}' refers to a group of companies, not a single stock. "
+            f"Did you mean one of these? {options}. "
+            f"Please ask again with the specific company name."
+        )
+
     symbol = resolve_symbol(raw_symbol)
 
     try:
@@ -84,7 +116,11 @@ def execute(arguments: dict):
                 symbol = f"{symbol}.NS"
 
         if meta is None:
-            return f"Stock price error: could not find data for '{raw_symbol}'. Try the exact ticker (e.g. AAPL, RELIANCE.NS)."
+            return (
+                f"Stock price error: could not find data for '{raw_symbol}'. "
+                f"Try being more specific (e.g. 'Tata Motors' instead of 'Tata'), "
+                f"or use the exact ticker (e.g. AAPL, RELIANCE.NS)."
+            )
 
         price = meta.get("regularMarketPrice")
         currency = meta.get("currency", "")
@@ -110,5 +146,6 @@ if __name__ == "__main__":
     print(execute({"symbol": "Apple"}))
     print(execute({"symbol": "Reliance"}))
     print(execute({"symbol": "Tata Motors"}))
-    print(execute({"symbol": "TCS"}))
-    print(execute({"symbol": "Infosys"}))
+    print(execute({"symbol": "Tata Steel"}))
+    print(execute({"symbol": "Titan"}))
+    print(execute({"symbol": "Tata"}))
