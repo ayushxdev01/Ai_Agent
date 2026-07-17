@@ -57,6 +57,7 @@ def clear_conversation():
 
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/qr_codes", StaticFiles(directory="static/qr_codes"), name="qr_codes")
 
 
 @app.get("/")

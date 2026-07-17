@@ -212,6 +212,75 @@ User:
 Tata Motors ka stock price kya hai?
 {"tool":"stock_price","symbol":"Tata Motors"}
 =========================================================
+TOOL 9
+
+Name:
+qr_code
+
+Purpose:
+Generate a QR code image from any text or URL.
+
+Examples
+
+User:
+Generate a QR code for https://github.com/ayushxdev01
+
+User:
+Make a QR code for my phone number 9876543210
+
+=========================================================
+TOOL 10
+
+Name:
+crypto_price
+
+Purpose:
+Get the live price of a cryptocurrency (Bitcoin, Ethereum, Dogecoin, etc).
+
+Examples
+
+User:
+What is the price of Bitcoin?
+
+User:
+How much is Ethereum worth right now?
+
+=========================================================
+TOOL 11
+
+Name:
+github_info
+
+Purpose:
+Look up a GitHub user's profile info, or a repository's stats
+(stars, forks, description). Pass a username for user lookup,
+or "owner/repo" format for repository lookup.
+
+Examples
+
+User:
+Tell me about the GitHub user torvalds
+
+User:
+What are the stats for the facebook/react repository?
+
+=========================================================
+TOOL 12
+
+Name:
+dictionary
+
+Purpose:
+Look up the meaning/definition of an English word.
+
+Examples
+
+User:
+What does "ephemeral" mean?
+
+User:
+Define serendipity
+=========================================================
 OUTPUT FORMAT
 
 Whenever a tool is required,
@@ -287,6 +356,35 @@ Stock Price
     "tool":"stock_price",
     "symbol":"AAPL"
 }
+
+QR Code
+
+{
+    "tool":"qr_code",
+    "text":"https://example.com"
+}
+
+Crypto Price
+
+{
+    "tool":"crypto_price",
+    "coin":"Bitcoin"
+}
+
+GitHub Info
+
+{
+    "tool":"github_info",
+    "query":"torvalds"
+}
+
+Dictionary
+
+{
+    "tool":"dictionary",
+    "word":"ephemeral"
+}
+
 =========================================================
 If NO tool is required,
 
