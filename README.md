@@ -15,7 +15,7 @@
 
 **A tool-calling AI agent with a live web dashboard — ask it anything, and it reaches for the right tool automatically.**
 
-[Live Demo](https://ai-agent-amber-tau.vercel.app) · [Report Bug](https://github.com/ayushxdev01/Ai_Agent/issues) · [Request Feature](https://github.com/ayushxdev01/Ai_Agent/issues)
+[🔴 Live Demo](https://ai-agent-ayushxdev.vercel.app/) · [Report Bug](https://github.com/ayushxdev01/Ai_Agent/issues) · [Request Feature](https://github.com/ayushxdev01/Ai_Agent/issues)
 
 </div>
 
@@ -61,7 +61,9 @@ The frontend is a single-page dashboard with a glowing dark UI, live tool indica
 ## 🖥️ Preview
 
 <div align="center">
-<img src="assets/demo.svg" width="70%" alt="AI Agent live demo animation"/>
+<img src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif" width="60%" alt="demo placeholder — replace with your own screen recording"/>
+
+<sub>👆 replace this with a real GIF of your app — record with <a href="https://www.screentogif.com/">ScreenToGif</a> and drop it in <code>/assets/demo.gif</code></sub>
 </div>
 
 <br/>
@@ -167,13 +169,14 @@ Open **http://127.0.0.1:8000** in your browser. 🎉
 <div align="center">
 
 [![Deploy on Vercel](https://vercel.com/button)](https://vercel.com/new)
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new)
+
+**🔴 Live at: [ai-agent-ayushxdev.vercel.app](https://ai-agent-ayushxdev.vercel.app/)**
 
 </div>
 
-Both platforms are supported — just connect your GitHub repo and add the environment variables from `.env.example` in your platform's dashboard.
+Connect your GitHub repo to Vercel and add the environment variables from `.env.example` in the project dashboard.
 
-> ⚠️ **Note:** Serverless platforms (like Vercel) have a read-only filesystem, so features like image generation return inline base64 data instead of saved files, and conversation memory is stored in the OS temp directory rather than persisted permanently.
+> ⚠️ **Note:** Vercel's filesystem is read-only, so features like image generation return inline base64 data instead of saved files, and conversation memory is stored in the OS temp directory rather than persisted permanently.
 
 <br/>
 
