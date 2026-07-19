@@ -84,7 +84,6 @@ The frontend is a single-page dashboard with a glowing dark UI, live tool indica
 ![JavaScript](https://img.shields.io/badge/-JavaScript-C6FF3D?style=flat-square&logo=javascript&logoColor=0c1310)
 ![Groq](https://img.shields.io/badge/-Groq_API-3DFFC0?style=flat-square&logo=lightning&logoColor=0c1310)
 ![Vercel](https://img.shields.io/badge/-Vercel-black?style=flat-square&logo=vercel&logoColor=white)
-![Railway](https://img.shields.io/badge/-Railway-0B0D0E?style=flat-square&logo=railway&logoColor=white)
 
 </div>
 
