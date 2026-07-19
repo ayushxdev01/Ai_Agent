@@ -1,178 +1,246 @@
 <div align="center">
 
-# 🤖 AI Agent
+<img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&size=32&duration=3000&pause=1000&color=3DFFC0&center=true&vCenter=true&width=600&lines=AI+Agent;Tool-Calling+LLM+Assistant;Powered+by+Groq+%2B+Llama+3.3;Built+by+Ayush+Gupta" alt="Typing SVG" />
 
-### A tool-using AI agent powered by Groq (Llama 3.3 70B)
+<br/>
 
-Available as a **CLI chatbot** and a **FastAPI web service** with a live frontend.
+![Python](https://img.shields.io/badge/Python-3.12-3DFFC0?style=for-the-badge&logo=python&logoColor=white&labelColor=0c1310)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.139-3DFFC0?style=for-the-badge&logo=fastapi&logoColor=white&labelColor=0c1310)
+![Groq](https://img.shields.io/badge/Groq-Llama_3.3-C6FF3D?style=for-the-badge&logo=lightning&logoColor=white&labelColor=0c1310)
+![License](https://img.shields.io/badge/License-MIT-3DFFC0?style=for-the-badge&labelColor=0c1310)
 
-![Python](https://img.shields.io/badge/Python-3.12+-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.139-009688?style=for-the-badge&logo=fastapi&logoColor=white)
-![Groq](https://img.shields.io/badge/Groq-Llama%203.3%2070B-F55036?style=for-the-badge&logo=lightning&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+![Repo Size](https://img.shields.io/github/repo-size/ayushxdev01/Ai_Agent?style=flat-square&color=3DFFC0&labelColor=0c1310)
+![Last Commit](https://img.shields.io/github/last-commit/ayushxdev01/Ai_Agent?style=flat-square&color=C6FF3D&labelColor=0c1310)
+![Stars](https://img.shields.io/github/stars/ayushxdev01/Ai_Agent?style=flat-square&color=3DFFC0&labelColor=0c1310)
+
+**A tool-calling AI agent with a live web dashboard — ask it anything, and it reaches for the right tool automatically.**
+
+[Live Demo](https://ai-agent-amber-tau.vercel.app) · [Report Bug](https://github.com/ayushxdev01/Ai_Agent/issues) · [Request Feature](https://github.com/ayushxdev01/Ai_Agent/issues)
 
 </div>
 
----
+<br/>
 
-## 📌 Table of Contents
+<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:3DFFC0,100:C6FF3D&height=120&section=header" width="100%"/>
+</div>
 
-- [Features](#-features)
-- [Project Structure](#-project-structure)
-- [Prerequisites](#-prerequisites)
-- [Local Setup](#-local-setup)
-- [Running the App](#-running-the-app)
-- [API Endpoints](#-api-endpoints)
-- [Deployment](#-deployment)
-- [Git & GitHub Notes](#-git--github-notes)
+## ✨ Overview
 
----
+**AI Agent** is a full-stack, tool-calling conversational assistant. It uses an LLM (via [Groq](https://groq.com)) as its reasoning engine and a registry of Python tools to fetch **live, real-world data** — instead of hallucinating answers, it calls the right tool and responds with facts.
 
-## ✨ Features
+The frontend is a single-page dashboard with a glowing dark UI, live tool indicators, image rendering, and PDF upload support.
 
-- 💬 Conversational agent with persistent memory (`data/memory.json`)
-- 🛠️ Built-in tool calling:
+<br/>
 
-  | Tool | Description |
-  |------|-------------|
-  | 🧮 `calculator` | Basic math operations |
-  | 🕒 `time` | Current time lookup |
-  | 🌦️ `weather` | Weather info |
-  | 💱 `currency_converter` | Currency conversion |
-  | 📚 `wikipedia` | Wikipedia lookups |
-  | 📏 `unit_converter` | Unit conversion |
+## 🧰 Tools
 
-- ⚡ Two ways to run:
-  - **CLI mode** → quick terminal chat (`app.py`)
-  - **API + Web UI** → FastAPI server with a static frontend (`server.py`)
+<div align="center">
 
----
+| Tool | What it does |
+|---|---|
+| 🧮 **Calculator** | Arithmetic, percentages, multi-step math |
+| 🕐 **Time** | Current local time |
+| ⛅ **Weather** | Live city weather |
+| 💱 **Currency Converter** | Real-time exchange rates (any currency, name or code) |
+| 📖 **Wikipedia** | Quick factual lookups |
+| 📏 **Unit Converter** | km ↔ miles, kg ↔ lbs, °C ↔ °F, etc. |
+| 🔍 **Web Search** | Live web results via DuckDuckGo |
+| 📈 **Stock Price** | Live stock prices (US + NSE, by name or ticker) |
+| 🪙 **Crypto Price** | Live cryptocurrency prices |
+| 🔳 **QR Code** | Generates a QR code from any text/URL |
+| 🐙 **GitHub Info** | User & repository lookups |
+| 📚 **Dictionary** | English word definitions |
+| 🎬 **Movie Info** | Plot, cast, ratings via OMDb |
+| 📄 **PDF Summarizer** | Upload a PDF, ask questions or get a summary |
+
+</div>
+
+<br/>
+
+## 🖥️ Preview
+
+<div align="center">
+<img src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif" width="60%" alt="demo placeholder — replace with your own screen recording"/>
+
+<sub>👆 replace this with a real GIF of your app — record with <a href="https://www.screentogif.com/">ScreenToGif</a> and drop it in <code>/assets/demo.gif</code></sub>
+</div>
+
+<br/>
+
+## 🏗️ Tech Stack
+
+<div align="center">
+
+![Python](https://img.shields.io/badge/-Python-3DFFC0?style=flat-square&logo=python&logoColor=0c1310)
+![FastAPI](https://img.shields.io/badge/-FastAPI-3DFFC0?style=flat-square&logo=fastapi&logoColor=0c1310)
+![Uvicorn](https://img.shields.io/badge/-Uvicorn-3DFFC0?style=flat-square&logo=gunicorn&logoColor=0c1310)
+![HTML5](https://img.shields.io/badge/-HTML5-C6FF3D?style=flat-square&logo=html5&logoColor=0c1310)
+![CSS3](https://img.shields.io/badge/-CSS3-C6FF3D?style=flat-square&logo=css3&logoColor=0c1310)
+![JavaScript](https://img.shields.io/badge/-JavaScript-C6FF3D?style=flat-square&logo=javascript&logoColor=0c1310)
+![Groq](https://img.shields.io/badge/-Groq_API-3DFFC0?style=flat-square&logo=lightning&logoColor=0c1310)
+![Vercel](https://img.shields.io/badge/-Vercel-black?style=flat-square&logo=vercel&logoColor=white)
+![Railway](https://img.shields.io/badge/-Railway-0B0D0E?style=flat-square&logo=railway&logoColor=white)
+
+</div>
+
+<br/>
 
 ## 📂 Project Structure
 
 ```
-.
-├── agent.py           # Core agent loop (LLM → tool call → final response)
-├── app.py             # CLI entry point
-├── server.py          # FastAPI server (API + serves static/index.html)
-├── config.py          # Loads GROQ_API_KEY from environment
-├── llm.py             # LLM client wrapper
-├── memory.py          # Load/save conversation history
-├── parser.py          # Parses tool-call requests from LLM output
-├── prompts.py         # System prompt
-├── tools/             # Individual tool implementations + registry
-├── static/index.html  # Simple frontend for the web UI
-├── data/memory.json   # Runtime conversation history (auto-generated)
+session 2/
+├── static/
+│   └── index.html          # Frontend dashboard (single file: HTML+CSS+JS)
+├── tools/
+│   ├── calculator.py
+│   ├── time_tool.py
+│   ├── weather.py
+│   ├── currency_converter.py
+│   ├── wikipedia_tool.py
+│   ├── unit_converter.py
+│   ├── web_search.py
+│   ├── stock_price.py
+│   ├── qr_code.py
+│   ├── crypto_price.py
+│   ├── github_info.py
+│   ├── dictionary.py
+│   ├── movie_info.py
+│   └── registry.py         # Central tool registry
+├── agent.py                 # Core agent loop (LLM ↔ tool orchestration)
+├── llm.py                   # Groq API wrapper
+├── memory.py                 # Conversation memory (temp-dir based)
+├── parser.py                 # Extracts tool calls from LLM output
+├── prompts.py                # System prompt + tool descriptions
+├── config.py                 # Env var loading
+├── server.py                  # FastAPI app + routes
 ├── requirements.txt
-├── .env.example       # Template for required environment variables
-└── .gitignore
+└── .env.example
 ```
 
----
+<br/>
 
-## 🧰 Prerequisites
+## 🚀 Getting Started
 
-- 🐍 Python 3.12+
-- 🔑 A [Groq API key](https://console.groq.com/keys)
+### 1. Clone the repo
 
----
-
-## ⚙️ Local Setup
-
-**1️⃣ Clone the repo**
 ```bash
 git clone https://github.com/ayushxdev01/Ai_Agent.git
 cd Ai_Agent
 ```
 
-**2️⃣ Create & activate a virtual environment**
+### 2. Create a virtual environment
+
 ```bash
 python -m venv venv
-
-# Windows
-venv\Scripts\activate
-
-# macOS/Linux
-source venv/bin/activate
+venv\Scripts\activate        # Windows
+source venv/bin/activate     # macOS/Linux
 ```
 
-**3️⃣ Install dependencies**
+### 3. Install dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
-**4️⃣ Set up environment variables**
-```bash
-cp .env.example .env
-```
-Then open `.env` and add your key:
+### 4. Set up environment variables
+
+Copy `.env.example` → `.env` and fill in your keys:
+
 ```env
-GROQ_API_KEY=your_groq_api_key_here
+GROQ_API_KEY=your_groq_key_here
+OMDB_API_KEY=your_omdb_key_here
 ```
 
----
+Get a free Groq key at [console.groq.com](https://console.groq.com/keys) and a free OMDb key at [omdbapi.com](https://www.omdbapi.com/apikey.aspx).
 
-## ▶️ Running the App
+### 5. Run the server
 
-**🖥️ CLI mode**
 ```bash
-python app.py
+uvicorn server:app --reload --port 8000
 ```
 
-**🌐 API + Web server mode**
-```bash
-uvicorn server:app --reload
-```
-Then open 👉 `http://127.0.0.1:8000`
+Open **http://127.0.0.1:8000** in your browser. 🎉
 
----
+<br/>
 
-## 🔌 API Endpoints
-
-| Method | Endpoint | Description |
-|:------:|----------|-------------|
-| `POST` | `/api/chat` | Send a message, get the agent's reply |
-| `GET` | `/api/tools` | List available tools |
-| `POST` | `/api/clear` | Clear conversation memory |
-| `GET` | `/` | Serves the frontend (`static/index.html`) |
-
----
-
-## 🚀 Deployment
-
-### Render / Railway (recommended)
-
-1. Push this repo to GitHub ⚠️ *(see notes below on what NOT to push)*
-2. Create a new **Web Service** on [Render](https://render.com) or a project on [Railway](https://railway.app), and connect your GitHub repo.
-3. **Build Command:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. **Start Command:**
-   ```bash
-   uvicorn server:app --host 0.0.0.0 --port $PORT
-   ```
-5. Add an environment variable in the platform dashboard *(never in a committed `.env`)*:
-   ```env
-   GROQ_API_KEY=your_groq_api_key_here
-   ```
-6. Deploy 🎉 — the platform rebuilds and redeploys automatically on every push to `main`.
-
----
-
-## ⚠️ Git & GitHub Notes
-
-> [!WARNING]
-> - 🚫 **Never commit `.env`** — it holds your real API key. Only commit `.env.example`.
-> - 🚫 **Never push `venv/`** — deployment platforms rebuild it from `requirements.txt`.
-> - 🚫 **Never push `__pycache__/`** — auto-generated bytecode.
-> - 🗑️ `data/memory.json` is runtime-generated — excluded via `.gitignore` so old chats don't get committed.
-> - 🔁 If a key is ever accidentally committed, **rotate it immediately** on the [Groq console](https://console.groq.com/keys).
-
----
+## ☁️ Deployment
 
 <div align="center">
 
-Made with ⚡ using FastAPI + Groq
+[![Deploy on Vercel](https://vercel.com/button)](https://vercel.com/new)
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new)
+
+</div>
+
+Both platforms are supported — just connect your GitHub repo and add the environment variables from `.env.example` in your platform's dashboard.
+
+> ⚠️ **Note:** Serverless platforms (like Vercel) have a read-only filesystem, so features like image generation return inline base64 data instead of saved files, and conversation memory is stored in the OS temp directory rather than persisted permanently.
+
+<br/>
+
+## 🧠 How It Works
+
+```mermaid
+flowchart LR
+    A[User Message] --> B{Agent}
+    B --> C[LLM: Groq / Llama 3.3]
+    C -->|needs a tool| D[Tool Registry]
+    D --> E[Execute Tool]
+    E --> F[LLM synthesizes final answer]
+    C -->|no tool needed| F
+    F --> G[Response to User]
+
+    style B fill:#121b16,stroke:#3DFFC0,color:#eef1f8
+    style C fill:#121b16,stroke:#C6FF3D,color:#eef1f8
+    style D fill:#121b16,stroke:#3DFFC0,color:#eef1f8
+    style F fill:#121b16,stroke:#3DFFC0,color:#eef1f8
+```
+
+1. User sends a message
+2. The LLM decides: answer directly, or request a tool (returns structured JSON)
+3. If a tool is requested, the agent executes it and feeds the result back to the LLM
+4. The LLM synthesizes a final, natural-language response
+5. Everything is saved to conversation memory for context in future turns
+
+<br/>
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+1. Fork the repo
+2. Create your feature branch (`git checkout -b feature/amazing-tool`)
+3. Commit your changes (`git commit -m 'Add amazing tool'`)
+4. Push to the branch (`git push origin feature/amazing-tool`)
+5. Open a Pull Request
+
+<br/>
+
+## 📜 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+<br/>
+
+## 👤 Author
+
+<div align="center">
+
+**Ayush Gupta**
+
+[![GitHub](https://img.shields.io/badge/GitHub-ayushxdev01-3DFFC0?style=for-the-badge&logo=github&logoColor=0c1310)](https://github.com/ayushxdev01)
+
+<img src="https://github-readme-stats.vercel.app/api?username=ayushxdev01&show_icons=true&theme=radical&hide_border=true&bg_color=0c1310&title_color=3DFFC0&icon_color=C6FF3D&text_color=eef1f8" width="48%" />
+
+</div>
+
+<br/>
+
+<div align="center">
+
+### ⭐ If you found this project useful, consider giving it a star!
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:C6FF3D,100:3DFFC0&height=100&section=footer" width="100%"/>
 
 </div>
