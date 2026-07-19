@@ -235,8 +235,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 [![GitHub](https://img.shields.io/badge/GitHub-ayushxdev01-3DFFC0?style=for-the-badge&logo=github&logoColor=0c1310)](https://github.com/ayushxdev01)
 
-<img src="https://github-readme-stats.vercel.app/api?username=ayushxdev01&show_icons=true&theme=radical&hide_border=true&bg_color=0c1310&title_color=3DFFC0&icon_color=C6FF3D&text_color=eef1f8&cache_seconds=1800" width="48%" alt="ayushxdev01's GitHub stats"/>
-
 </div>
 
 <br/>
