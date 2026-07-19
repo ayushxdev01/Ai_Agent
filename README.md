@@ -61,9 +61,7 @@ The frontend is a single-page dashboard with a glowing dark UI, live tool indica
 ## 🖥️ Preview
 
 <div align="center">
-<img src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif" width="60%" alt="demo placeholder — replace with your own screen recording"/>
-
-<sub>👆 replace this with a real GIF of your app — record with <a href="https://www.screentogif.com/">ScreenToGif</a> and drop it in <code>/assets/demo.gif</code></sub>
+<img src="assets/demo.svg" width="70%" alt="AI Agent live demo animation"/>
 </div>
 
 <br/>
