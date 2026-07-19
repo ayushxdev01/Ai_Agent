@@ -1,0 +1,143 @@
+<svg viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" font-family="Verdana, Geneva, sans-serif">
+
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#081310"/>
+      <stop offset="100%" stop-color="#05070a"/>
+    </linearGradient>
+
+    <radialGradient id="glow1" cx="15%" cy="0%" r="55%">
+      <stop offset="0%" stop-color="#3dffc0" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#3dffc0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="100%" cy="10%" r="55%">
+      <stop offset="0%" stop-color="#c6ff3d" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#c6ff3d" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow3" cx="50%" cy="105%" r="55%">
+      <stop offset="0%" stop-color="#22b88c" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#22b88c" stop-opacity="0"/>
+    </radialGradient>
+
+    <pattern id="dotGrid" width="18" height="18" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#3dffc0" fill-opacity="0.10"/>
+    </pattern>
+
+    <linearGradient id="shine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="30%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="47%" stop-color="#ffffff" stop-opacity="0.10"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="53%" stop-color="#ffffff" stop-opacity="0.10"/>
+      <stop offset="70%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <clipPath id="frameClip">
+      <rect x="0" y="0" width="700" height="380" rx="14"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#frameClip)">
+
+    <!-- base background -->
+    <rect x="0" y="0" width="700" height="380" fill="url(#bgGrad)"/>
+    <rect x="0" y="0" width="700" height="380" fill="url(#glow1)"/>
+    <rect x="0" y="0" width="700" height="380" fill="url(#glow2)"/>
+    <rect x="0" y="0" width="700" height="380" fill="url(#glow3)"/>
+    <rect x="0" y="0" width="700" height="380" fill="url(#dotGrid)"/>
+
+    <!-- moving shine sweep -->
+    <g>
+      <rect x="-400" y="-200" width="500" height="900" fill="url(#shine)" transform="rotate(25)">
+        <animateTransform attributeName="transform" type="translate"
+          values="-100,0; 900,0; -100,0" dur="7s" repeatCount="indefinite" additive="sum"/>
+      </rect>
+    </g>
+
+    <rect x="0" y="0" width="700" height="380" fill="none" stroke="#1e2b23" stroke-width="1.5" rx="14"/>
+
+    <!-- header -->
+    <rect x="0" y="0" width="700" height="46" fill="#0c1310"/>
+    <line x1="0" y1="46" x2="700" y2="46" stroke="#141d18" stroke-width="1"/>
+
+    <!-- rotating ring logo -->
+    <g transform="translate(30,23)">
+      <circle r="12" fill="none" stroke="#3dffc0" stroke-opacity="0.35" stroke-width="1" stroke-dasharray="3 4">
+        <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="6s" repeatCount="indefinite"/>
+      </circle>
+      <circle r="8" fill="none" stroke="#c6ff3d" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="2 3">
+        <animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="4s" repeatCount="indefinite"/>
+      </circle>
+      <circle r="3" fill="#3dffc0">
+        <animate attributeName="r" values="2.6;3.6;2.6" dur="2.6s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="1;0.7;1" dur="2.6s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+
+    <text x="48" y="20" fill="#eef1f8" font-size="13" font-weight="bold">AI Agent</text>
+    <text x="48" y="33" fill="#485065" font-size="9">session active</text>
+
+    <circle cx="640" cy="23" r="4" fill="#5fd98a">
+      <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="580" y="27" fill="#5fd98a" font-size="9" text-anchor="start">server connected</text>
+
+    <!-- MESSAGE 1: user "hi" -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.05;0.08;0.95;1" dur="9s" repeatCount="indefinite"/>
+      <text x="660" y="78" fill="#485065" font-size="8" text-anchor="end">YOU</text>
+      <rect x="600" y="86" width="60" height="30" rx="10" fill="#16302a" stroke="#22412f"/>
+      <text x="630" y="105" fill="#eef1f8" font-size="12" text-anchor="middle">hi</text>
+    </g>
+
+    <!-- MESSAGE 2: agent hello -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.13;0.16;0.95;1" dur="9s" repeatCount="indefinite"/>
+      <text x="40" y="140" fill="#485065" font-size="8" text-anchor="start">AGENT</text>
+      <rect x="40" y="148" width="290" height="30" rx="10" fill="#121b16" stroke="#1e2b23"/>
+      <text x="55" y="167" fill="#eef1f8" font-size="12">Hello, how can I help you today?</text>
+    </g>
+
+    <!-- MESSAGE 3: user "introduce yourself" -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.27;0.30;0.95;1" dur="9s" repeatCount="indefinite"/>
+      <text x="660" y="200" fill="#485065" font-size="8" text-anchor="end">YOU</text>
+      <rect x="480" y="208" width="180" height="30" rx="10" fill="#16302a" stroke="#22412f"/>
+      <text x="570" y="227" fill="#eef1f8" font-size="12" text-anchor="middle">introduce yourself</text>
+    </g>
+
+    <!-- typing dots -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.37;0.40;0.47;0.50;1" dur="9s" repeatCount="indefinite"/>
+      <text x="40" y="262" fill="#485065" font-size="8" text-anchor="start">AGENT</text>
+      <rect x="40" y="270" width="56" height="26" rx="10" fill="#121b16" stroke="#1e2b23"/>
+      <circle cx="58" cy="283" r="2.5" fill="#22b88c">
+        <animate attributeName="cy" values="283;278;283" dur="1s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="68" cy="283" r="2.5" fill="#22b88c">
+        <animate attributeName="cy" values="283;278;283" dur="1s" begin="0.15s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="78" cy="283" r="2.5" fill="#22b88c">
+        <animate attributeName="cy" values="283;278;283" dur="1s" begin="0.3s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+
+    <!-- MESSAGE 4: agent final answer -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.50;0.53;0.95;1" dur="9s" repeatCount="indefinite"/>
+      <text x="40" y="262" fill="#485065" font-size="8" text-anchor="start">AGENT</text>
+      <rect x="40" y="270" width="600" height="80" rx="10" fill="#121b16" stroke="#1e2b23"/>
+      <text x="55" y="292" fill="#eef1f8" font-size="12">
+        <tspan x="55" dy="0">I'm an AI assistant with access to live tools —</tspan>
+        <tspan x="55" dy="18">calculator, weather, crypto prices, currency</tspan>
+        <tspan x="55" dy="18">conversion, and more. Ask me anything!</tspan>
+      </text>
+    </g>
+
+    <!-- footer input bar -->
+    <rect x="20" y="336" width="660" height="34" rx="12" fill="#0c1310" stroke="#1e2b23"/>
+    <text x="36" y="357" fill="#485065" font-size="11">Type your message...</text>
+    <circle cx="655" cy="353" r="12" fill="#3dffc0"/>
+    <path d="M650 353 L660 348 L657 353 L660 358 Z" fill="#05070a"/>
+
+  </g>
+</svg>
