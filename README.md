@@ -13,9 +13,15 @@
 ![Last Commit](https://img.shields.io/github/last-commit/ayushxdev01/Ai_Agent?style=flat-square&color=C6FF3D&labelColor=0c1310)
 ![Stars](https://img.shields.io/github/stars/ayushxdev01/Ai_Agent?style=flat-square&color=3DFFC0&labelColor=0c1310)
 
-**A tool-calling AI agent with a live web dashboard — ask it anything, and it reaches for the right tool automatically.**
+**A tool-calling AI agent that answers with live, real-world data — calculations, weather, crypto & stock prices, currency conversion, PDF summaries, and more.**
 
-[🔴 Live Demo](https://ai-agent-ayushxdev.vercel.app/) · [Report Bug](https://github.com/ayushxdev01/Ai_Agent/issues) · [Request Feature](https://github.com/ayushxdev01/Ai_Agent/issues)
+<div>
+
+[![Live Demo](https://img.shields.io/badge/🔴_Live_Demo-3DFFC0?style=for-the-badge&logoColor=0c1310&labelColor=0c1310)](https://ai-agent-ayushxdev.vercel.app/)
+[![Report Bug](https://img.shields.io/badge/Report_Bug-C6FF3D?style=for-the-badge&labelColor=0c1310&color=121b16)](https://github.com/ayushxdev01/Ai_Agent/issues)
+[![Request Feature](https://img.shields.io/badge/Request_Feature-C6FF3D?style=for-the-badge&labelColor=0c1310&color=121b16)](https://github.com/ayushxdev01/Ai_Agent/issues)
+
+</div>
 
 </div>
 
